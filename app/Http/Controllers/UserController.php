@@ -5,6 +5,9 @@ use App\Models\User;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\QueryBuilder;
+
 
 class UserController extends Controller
 {
@@ -70,5 +73,21 @@ class UserController extends Controller
         return response()->json($response);
 
     }
+
+    function search(){
+        $users = DB::select(`select * from users`);
+
+       dd($users);
+
+}
+
+function show($id){
+   
+return $id; 
+}
+
+function index(){
+    return view('users');
+}
 }
 
