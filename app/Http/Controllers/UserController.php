@@ -75,7 +75,7 @@ class UserController extends Controller
     }
 
     function search(){
-        $users = DB::select(`select * from users`);
+        $users = DB::select('select * from users');
 
        dd($users);
 
@@ -87,7 +87,7 @@ return $id;
 }
 
 function index(){
-    return view('users');
+return;
 }
 }
 

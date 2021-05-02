@@ -9,4 +9,5 @@ Route::get('/', function () {
 
 Route::get("register" , [UserControlller::class, 'register']);
 Route::get('show/{id}' , [UserController::class, 'show']);
-Route::get('users' , [UserController::class, 'index']);
+Route::get('search' , [UserController::class, 'search']);
+Route::post('login' , [UserController::class, 'login']);
