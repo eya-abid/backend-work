@@ -18,3 +18,6 @@ Route::post('login' , [UserController::class, 'login']);
 Route::get('/search' , [UserController::class, 'search']);
 Route::get('/show{id}' , [UserController::class, 'show']);
 Route::post('create' , [PostController::class, 'createPost']);
+Route::get('followers' , [UserController::class, 'followers']);
+Route::get('followed' , [UserController::class, 'followed']);
+

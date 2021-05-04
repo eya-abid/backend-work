@@ -17,12 +17,12 @@ class UserController extends Controller
 
     if($user) {
         $response['status'] =0;
-        $response['message'] = 'Email already exists';
+        $response['message'] = 'Email or Username already exists';
         $response['code'] = 409;
     } else {
     
         $user = User::create([
-            'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]
@@ -86,8 +86,23 @@ function show($id){
 return $id; 
 }
 
-function index(){
-return;
+function followers(){
+    $name='user1';
+    $followers = DB::table('photos')->join('users','photos.username','=', 'users.username')
+                 ->join('follows', 'follows.follower', '=','users.username')->where('follows.followed', '=', $name)
+                 ->select('photos.icon_url', 'photos.username')->get();
+
+       dd($followers);
+}
+
+function followed(){
+    $name='user1';
+    $followed = DB::table('photos')->join('users','photos.username','=', 'users.username')
+    ->join('follows', 'follows.followed', '=','users.username')->where('follows.follower', '=', $name)
+    ->select('photos.icon_url', 'photos.username')->get();
+
+
+       dd($followed);
 }
 }
 
